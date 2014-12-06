@@ -9,17 +9,15 @@ public class Player implements Runnable {
 
 	private Viewer viewer;
 	private ConcurrentLinkedDeque<Frame> frames;
-	
-	private long playoutDelay;
 
 	public Player(Viewer viewer, ConcurrentLinkedDeque<Frame> frames, long playoutDelay) {
 		this.viewer = viewer;
 		this.frames = frames;
-		this.playoutDelay = playoutDelay;
 	}
 
 	public void play() throws InterruptedException {
 		long startTime = System.nanoTime();
+		Thread.sleep(1);
 		while (true) {
 			if (!frames.isEmpty()) {
 				Frame f = frames.pollFirst();

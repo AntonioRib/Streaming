@@ -1,7 +1,9 @@
-import java.io.IOException;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-import player.*;
+import player.Frame;
+import player.Loader;
+import player.Player;
+import player.Viewer;
 
 
 public class Streamer {
@@ -11,21 +13,13 @@ public class Streamer {
 
 		new Thread(){
 			public void run() {
-				new Player(new Viewer(1280, 720), frames, 5).run();
+				try {
+					new Loader("Lifted-160p.dat", 10, 5, frames).load();
+				} catch (Exception e) { e.printStackTrace();}
 			}
 		}.start();
-		
-		try {
-			new Loader("data/Lifted-index.dat", frames).loadFile();
-		} catch (NumberFormatException e) {
-			System.out.println("Ficheiro dat mal formatado amigo.");
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.out.println("Janela fechada o programa vai terminar.");
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+			new Player(new Viewer(1280, 720), frames, 5).run();
 	}
 
 }

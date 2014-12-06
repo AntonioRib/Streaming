@@ -1,6 +1,9 @@
-import java.net.*;
-import java.util.*;
-import java.io.*;
+package player;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLDecoder;
+import java.util.Properties;
+import java.util.Scanner;
 
 
 /**
