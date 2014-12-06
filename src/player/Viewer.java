@@ -71,7 +71,7 @@ public class Viewer {
 
 				g2d.setColor(Color.GREEN);
 				g2d.setFont(g2d.getFont().deriveFont(18.0f));
-				g2d.drawString(String.format("(%dp, %d, %.1f)", stats.avgQuality(), stats.droppedFrames(), stats.accumJitter()), 10, super.getHeight() - 30);
+				g2d.drawString(String.format("(%dp; %d; %.1f)", stats.avgQuality(), stats.droppedFrames(), stats.accumJitter()), 10, super.getHeight() - 30);
 			}
 		}
 
