@@ -52,12 +52,17 @@ public class Loader{
 			InputStream is = clientSocket.getInputStream();
 
 			String s = HTTPUtilities.readLine(is);
-			System.out.println("Receiving: '"+s+"'");
-			System.out.println(HTTPUtilities.parseHttpRequest(s)[1]);
+			System.out.println("Receiving: '"+s.split("([\n])+")[0]+"'");
+			System.out.println(HTTPUtilities.parseHttpRequest(s.split("([\n])+")[0])[1]);
+			System.out.println(s);
 			load(HTTPUtilities.parseHttpRequest(s)[1]);
 
 			clientSocket.close();
 		}
 		//serverSocket.close();
+	}
+	
+	public void sendResponse(Frame f){
+		
 	}
 }
